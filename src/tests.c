@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 00:16:17 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 00:37:31 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	test_atoi(void)
 	ft_printf("%d\n", ft_atoi("130 "));
 }
 
-int	main(void)
-{
-	test_itoa();
-	// int	a[12];
-	// int	b[12];
+// int	main(int argc, )
+// {
+// 	test_itoa();
+// 	// int	a[12];
+// 	// int	b[12];
 
-	// for (int i = 0; i < 12; i++)
-	// 	a[i] = ft_randint(0, 99);
+// 	// for (int i = 0; i < 12; i++)
+// 	// 	a[i] = ft_randint(0, 99);
 	
-	// for (int i = 0; i < 12; i++)
-	// 	ft_printf("%d ", a[i]);
-}
+// 	// for (int i = 0; i < 12; i++)
+// 	// 	ft_printf("%d ", a[i]);
+// }
