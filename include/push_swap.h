@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 18:47:08 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 21:50:11 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ typedef enum e_err {
 	NOERR,
 	ERR_INIT,
 	ERR_ARGC,
-	ERR_ARGV
+	ERR_ARGV,
+	ERR_DUP,
 }	t_err;
 
 typedef struct s_node {
@@ -50,8 +51,14 @@ t_state	*init(int argc, char **argv);
 // stack.c
 bool	add_top(t_stack *stack, int val);
 bool	add_bottom(t_stack *stack, int val);
+int		find_down(t_node *node, int val);
 
 // util.c
 bool	ft_isnum(char *s);
+
+// print.c
+void	print_stack(t_stack *stack);
+void	print_stacks(t_state *state);
+
 
 #endif

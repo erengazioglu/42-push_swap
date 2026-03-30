@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:42:11 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 18:35:09 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 21:37:09 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	free_list(char **list)
 {
-	while (*list)
-		free(*(list++));
+	int	i;
+
+	i = 0;
+	while (list[i])
+		free(list[i++]);
 	free(list);
 }
 

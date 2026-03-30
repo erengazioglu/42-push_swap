@@ -9,7 +9,8 @@ SRC		= \
 		util.c \
 		stack.c \
 		init.c \
-		crash.c
+		crash.c \
+		print.c
 
 OBJ		:= $(SRC:%.c=obj/%.o)
 

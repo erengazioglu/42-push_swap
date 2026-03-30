@@ -6,13 +6,25 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 19:06:19 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 21:26:51 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-// (checked on main)
+static bool	has_duplicates(t_stack *stack)
+{
+	t_node	*node;
+
+	node = stack->top;
+	while (node)
+	{
+		if (find_down(node, node->value))
+			return (true);
+		node = node->next;
+	}
+	return (false);
+}
 
 static void	parse_many(t_state *state, int argc, char **argv)
 {
@@ -66,5 +78,7 @@ t_state	*init(int argc, char **argv)
 		parse_one(state, argv[1]);
 	else
 		parse_many(state, argc, argv);
+	if (has_duplicates(state->a))
+		crash(state, ERR_DUP);
 	return (state);
 }

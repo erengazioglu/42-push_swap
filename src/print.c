@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 21:50:17 by egaziogl         ###   ########.fr       */
+/*   Created: 2026/03/30 21:49:05 by egaziogl          #+#    #+#             */
+/*   Updated: 2026/03/30 21:49:47 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int argc, char **argv)
+void	print_stack(t_stack *stack)
 {
-	t_state	*state;
+	t_node	*curr;
+	int		i;
 
-	state = init(argc, argv);
-	print_stacks(state);
+	if (!stack->bottom)
+		return ;
+	i = 0;
+	curr = stack->bottom;
+	while (i++ < stack->count - 1)
+	{
+		ft_printf("%d ", curr->value);
+		curr = curr->next;
+	}
+	ft_printf("%d\n", curr->value);
+}
+
+void	print_stacks(t_state *state)
+{
+	write(1, "a: ", 3);
+	print_stack(state->a);
+	write(1, "b: ", 3);
+	print_stack(state->b);
 }
