@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 00:48:06 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 18:47:08 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,22 @@
 # include "../libft/include/libft.h"
 
 typedef enum e_err {
-	ERR_ARGS,
-	ERR_INIT
+	NOERR,
+	ERR_INIT,
+	ERR_ARGC,
+	ERR_ARGV
 }	t_err;
 
-typedef	struct s_stack {
-	t_list	*top;
-	t_list	*bottom;
+typedef struct s_node {
+	int				value;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
+
+typedef struct s_stack {
+	t_node	*top;
+	t_node	*bottom;
+	int		count;
 }	t_stack;
 
 typedef	struct s_state
@@ -34,5 +43,15 @@ typedef	struct s_state
 
 // crash.c
 void	crash(t_state *state, t_err err);
+
+// init.c
+t_state	*init(int argc, char **argv);
+
+// stack.c
+bool	add_top(t_stack *stack, int val);
+bool	add_bottom(t_stack *stack, int val);
+
+// util.c
+bool	ft_isnum(char *s);
 
 #endif

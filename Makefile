@@ -2,16 +2,20 @@ CC		= cc
 NAME	= push_swap
 CFLAGS	= -Wall -Werror -Wextra -g
 LIBS	= libft/libft.a
-# INCLUDE = include/pipex.h
+INCLUDE = include/push_swap
 
 SRC		= \
-		tests.c 
+		main.c \
+		util.c \
+		stack.c \
+		init.c \
+		crash.c
 
-OBJ				:= $(SRC:%.c=obj/%.o)
+OBJ		:= $(SRC:%.c=obj/%.o)
 
-all			: $(NAME)
+all		: $(NAME)
 
-$(NAME)		: $(OBJ) $(LIBS)
+$(NAME)	: $(OBJ) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $@
 $(OBJ): $(SRC:%.c=src/%.c) libft/libft.a # ($(INCLUDE))
 	@mkdir -p obj

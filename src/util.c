@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   crash.c                                            :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/29 23:59:24 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 19:07:59 by egaziogl         ###   ########.fr       */
+/*   Created: 2026/03/30 18:13:06 by egaziogl          #+#    #+#             */
+/*   Updated: 2026/03/30 18:18:05 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	crash(t_state *state, t_err err)
+bool	ft_isnum(char *s)
 {
-	(void) state;
-	ft_printf("err: %d\n", err);
-	// if (!state)
-	// else if (...)
-	exit(1);
+	if (*s == '-')
+		s++;
+	if (!*s)
+		return (false);
+	while (*s && ft_isdigit(*s))
+		s++;
+	if (*s)
+		return (false);
+	return (true);
 }

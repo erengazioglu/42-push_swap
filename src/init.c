@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 00:53:43 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/30 19:06:19 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,44 @@
 
 // (checked on main)
 
-static void	parse_many(char *input, t_state *state);
+static void	parse_many(t_state *state, int argc, char **argv)
+{
+	int	i;
 
-static void	parse_one(char *input, t_state *state)
+	i = 1;
+	while (i < argc)
+	{
+		if (!ft_isnum(argv[i]))
+			crash(state, ERR_ARGV);
+		add_bottom(state->a, ft_atoi(argv[i]));
+		i++;
+	}
+}
+
+static void	parse_one(t_state *state, char *input)
 {
 	char	**list;
-	
+	int		i;
+
 	list = ft_split(input, ' ');
 	if (!list)
 		crash(state, ERR_INIT);
-}
-
-static void	parse(int argc, char **argv)
-{
-	// this is where you check and decide which parse to use (above)
-	if (argc != 2)
-		crash(NULL, ERR_ARGS);
+	i = 0;
+	while (list[i])
+	{
+		if (!ft_isnum(list[i]))
+		{
+			free_list(list);
+			crash(state, ERR_ARGV);
+		}
+		add_bottom(state->a, ft_atoi(list[i++]));
+	}
+	free_list(list);
 }
 
 t_state	*init(int argc, char **argv)
 {
 	t_state	*state;
-
 
 	state = ft_calloc(1, sizeof(t_state));
 	if (!state)
@@ -44,5 +60,11 @@ t_state	*init(int argc, char **argv)
 	state->b = ft_calloc(1, sizeof(t_stack));
 	if (!state->a || !state->b)
 		crash(state, ERR_INIT);
-	return state;
+	if (argc == 1)
+		crash(state, ERR_ARGC);
+	else if (argc == 2)
+		parse_one(state, argv[1]);
+	else
+		parse_many(state, argc, argv);
+	return (state);
 }
