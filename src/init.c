@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 21:26:51 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:36:52 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	parse_many(t_state *state, int argc, char **argv)
 	{
 		if (!ft_isnum(argv[i]))
 			crash(state, ERR_ARGV);
-		add_bottom(state->a, ft_atoi(argv[i]));
+		add_bottom(state->a, ft_satoi(state, argv[i]));
 		i++;
 	}
 }
@@ -56,7 +56,7 @@ static void	parse_one(t_state *state, char *input)
 			free_list(list);
 			crash(state, ERR_ARGV);
 		}
-		add_bottom(state->a, ft_atoi(list[i++]));
+		add_bottom(state->a, ft_satoi(state, list[i++]));
 	}
 	free_list(list);
 }

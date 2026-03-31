@@ -6,11 +6,17 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 17:29:10 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:39:51 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+int find_min(t_stack *stack)
+{
+
+}
+
 
 // int	find_up(t_node *node, int val)
 // {
@@ -196,4 +202,23 @@ void	swap(t_stack *stack)
 	node->next->prev = node;
 	stack->top = node;
 	node->prev = NULL;
+}
+
+void	refresh_limits(t_stack *stack)
+{
+	if (!stack->count)
+	{
+		stack->min = 0;
+		stack->max = 0;
+	}
+	else if (stack->count == 1)
+	{
+		stack->min = stack->top->value;
+		stack->max = stack->top->value;
+	}
+	else
+	{
+		stack->min = find_min(stack);
+		stack->max = find_max(stack);
+	}
 }

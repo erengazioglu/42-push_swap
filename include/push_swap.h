@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 18:18:17 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:41:14 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	push(t_stack *stack, t_node *node, bool reverse);
 void	transfer(t_stack *from, t_stack *to, bool reverse);
 void	swap(t_stack *stack);
 void	rotate(t_stack *stack, bool reverse);
-
 
 // util.c
 bool	ft_isnum(char *s);

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 18:18:51 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:32:18 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,9 @@ int	main(int argc, char **argv)
 
 	state = init(argc, argv);
 	print_stacks(state);
-	test_satoi(state);
+	for (int i = 0; i < 3; i++)
+		push(state->b, pop(state->a, false), false);
+	print_stacks(state);
+	
+	// test_satoi(state);
 }
