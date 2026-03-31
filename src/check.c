@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 21:28:01 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 21:29:01 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ bool	check_order(t_stack *stack, bool reverse)
 		return (true);
 	while (curr->next)
 	{
-		ft_printf("checking %d\n", curr->value);
 		if (reverse)
 		{
 			if (curr->value < curr->next->value
@@ -36,6 +35,5 @@ bool	check_order(t_stack *stack, bool reverse)
 		}
 		curr = curr->next;
 	}
-	ft_printf("done\n");
 	return (true);
 }
