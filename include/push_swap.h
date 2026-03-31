@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 17:14:18 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:18:17 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_stack {
 	t_node	*top;
 	t_node	*bottom;
 	int		count;
+	int		min;
+	int		max;
 }	t_stack;
 
 typedef	struct s_state
@@ -65,6 +67,17 @@ bool	ft_isnum(char *s);
 // print.c
 void	print_stack(t_stack *stack);
 void	print_stacks(t_state *state);
+
+// ft_satoi.c
+int	ft_satoi(t_state *state, const char *str);
+
+// tests.c
+void	test_satoi(t_state *state);
+void	test_stack_ops(t_state *state);
+void	test_pop_push(t_state *state);
+
+
+
 
 
 #endif

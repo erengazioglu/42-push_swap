@@ -6,22 +6,55 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 14:59:24 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:17:17 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	test_pop_push(t_state *state)
+void	test_pop_push(t_state *state)
 {
 	t_node	*node;
 
 	node = pop(state->a, false);
 	if (!node)
-		return (0);
+		return ;
 	ft_printf("popped %d from a\n", node->value);
 	print_stacks(state);
 	push(state->b, node, false);
 	ft_printf("pushed %d to b\n", node->value);
+	print_stacks(state);
+}
+
+void	test_satoi(t_state *state)
+{
+	// these should work
+	ft_printf("%d\n", ft_satoi(state, "1230"));
+	ft_printf("%d\n", ft_satoi(state, "0123"));
+	ft_printf("%d\n", ft_satoi(state, "-1230"));
+	ft_printf("%d\n", ft_satoi(state, "2147483647"));
+	ft_printf("%d\n", ft_satoi(state, "-2147483648"));
+	// these shouldn't
+	ft_printf("%d\n", ft_satoi(state, "2147483648"));
+	ft_printf("%d\n", ft_satoi(state, "-2147483649"));
+	ft_printf("%d\n", ft_satoi(state, "--1230"));
+	ft_printf("%d\n", ft_satoi(state, "-"));
+	ft_printf("%d\n", ft_satoi(state, "+50"));
+}
+
+void	test_stack_ops(t_state *state)
+{
+	transfer(state->a, state->b, false);
+	ft_printf("transferred from a to b\n");
+	print_stacks(state);
+	rotate(state->b, false);
+	rotate(state->b, false);
+	ft_printf("rotated b twice\n");
+	print_stacks(state);
+	rotate(state->b, true);
+	ft_printf("reverse rotate b once\n");
+	print_stacks(state);
+	swap(state->b);
+	ft_printf("swap b once\n");
 	print_stacks(state);
 }
