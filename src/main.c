@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 16:34:08 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:14:05 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int	main(int argc, char **argv)
 	print_stacks(state);
 	rotate(state->b, true);
 	ft_printf("reverse rotate b once\n");
+	print_stacks(state);
+	swap(state->b);
+	ft_printf("swap b once\n");
 	print_stacks(state);
 }

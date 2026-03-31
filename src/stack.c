@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 16:57:29 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:29:10 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,4 +181,19 @@ void	rotate(t_stack *stack, bool reverse)
 		stack->bottom = node;
 	}
 	refresh_ends(stack);
+}
+
+void	swap(t_stack *stack)
+{
+	t_node *node;
+
+	if (stack->count < 2)
+		return ;
+	node = stack->top->next;		// 6
+	node->next->prev = stack->top;	// 1->prev=8
+	node->prev->next = node->next;	// 8->next=1
+	node->next = stack->top;
+	node->next->prev = node;
+	stack->top = node;
+	node->prev = NULL;
 }
