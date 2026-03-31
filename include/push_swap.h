@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 21:50:11 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 16:35:39 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ t_state	*init(int argc, char **argv);
 bool	add_top(t_stack *stack, int val);
 bool	add_bottom(t_stack *stack, int val);
 int		find_down(t_node *node, int val);
+t_node	*pop(t_stack *stack, bool reverse);
+void	push(t_stack *stack, t_node *node, bool reverse);
+void	transfer(t_stack *from, t_stack *to, bool reverse);
+void	rotate(t_stack *stack, bool reverse);
+
 
 // util.c
 bool	ft_isnum(char *s);

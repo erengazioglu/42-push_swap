@@ -6,34 +6,22 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/30 00:37:31 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:59:24 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../libft/include/libft.h"
+#include "../include/push_swap.h"
 
-// int	ft_randint(int min, int max)
-// {
-// 	return min + rand() / (RAND_MAX / (max - min + 1) + 1);
-// }
-
-void	test_atoi(void)
+int	test_pop_push(t_state *state)
 {
-	ft_printf("%d\n", ft_atoi("130"));
-	ft_printf("%d\n", ft_atoi(" 130"));
-	ft_printf("%d\n", ft_atoi("130 "));
+	t_node	*node;
+
+	node = pop(state->a, false);
+	if (!node)
+		return (0);
+	ft_printf("popped %d from a\n", node->value);
+	print_stacks(state);
+	push(state->b, node, false);
+	ft_printf("pushed %d to b\n", node->value);
+	print_stacks(state);
 }
-
-// int	main(int argc, )
-// {
-// 	test_itoa();
-// 	// int	a[12];
-// 	// int	b[12];
-
-// 	// for (int i = 0; i < 12; i++)
-// 	// 	a[i] = ft_randint(0, 99);
-	
-// 	// for (int i = 0; i < 12; i++)
-// 	// 	ft_printf("%d ", a[i]);
-// }
