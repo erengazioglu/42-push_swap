@@ -12,7 +12,8 @@ SRC		= \
 		crash.c \
 		print.c \
 		ft_satoi.c \
-		tests.c
+		tests.c \
+		check.c
 
 OBJ		:= $(SRC:%.c=obj/%.o)
 

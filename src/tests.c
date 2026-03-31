@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 18:17:17 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 21:00:08 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ void	test_stack_ops(t_state *state)
 	swap(state->b);
 	ft_printf("swap b once\n");
 	print_stacks(state);
+}
+
+void	test_min_max(t_state *state)
+{
+	ft_printf("min: %d\n", find_min(state->a));
+	ft_printf("max: %d\n", find_max(state->a));
 }

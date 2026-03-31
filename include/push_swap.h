@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 18:41:14 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/03/31 20:57:20 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef enum e_err {
 	ERR_ARGC,
 	ERR_ARGV,
 	ERR_DUP,
+	ERR_STACK_EMPTY
 }	t_err;
 
 typedef struct s_node {
@@ -59,6 +60,9 @@ void	push(t_stack *stack, t_node *node, bool reverse);
 void	transfer(t_stack *from, t_stack *to, bool reverse);
 void	swap(t_stack *stack);
 void	rotate(t_stack *stack, bool reverse);
+int		find_min(t_stack *stack);
+int		find_max(t_stack *stack);
+
 
 // util.c
 bool	ft_isnum(char *s);
@@ -75,7 +79,8 @@ void	test_satoi(t_state *state);
 void	test_stack_ops(t_state *state);
 void	test_pop_push(t_state *state);
 
-
+// check.c
+bool	check_order(t_stack *stack, bool reverse);
 
 
 
