@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 21:24:29 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 12:02:37 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	state = init(argc, argv);
 	print_stacks(state);
-	if (check_order(state->a, false))
+	if (check_order(state->b, true))
 		ft_printf("stack is in order\n");
 	else
 		ft_printf("stack is not in order\n");

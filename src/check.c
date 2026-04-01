@@ -6,13 +6,13 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 21:29:01 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:37:45 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-bool	check_order(t_stack *stack, bool reverse)
+bool	check_order(t_stack *stack, bool descending)
 {
 	t_node	*curr;
 
@@ -21,7 +21,7 @@ bool	check_order(t_stack *stack, bool reverse)
 		return (true);
 	while (curr->next)
 	{
-		if (reverse)
+		if (descending)
 		{
 			if (curr->value < curr->next->value
 				&& curr->value != stack->min)
