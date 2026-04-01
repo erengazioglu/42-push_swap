@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 20:57:20 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 11:31:31 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ void	test_pop_push(t_state *state);
 // check.c
 bool	check_order(t_stack *stack, bool reverse);
 
+// do.c
+void	do_swap(t_state *state, bool a, bool b);
+void	do_rotate(t_state *state, bool a, bool b);
+void	do_rotate_reverse(t_state *state, bool a, bool b);
+void	do_push(t_state *state, bool b);
+
+// solver.c
+void	begin(t_state *state);
 
 
 #endif

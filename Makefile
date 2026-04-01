@@ -13,7 +13,9 @@ SRC		= \
 		print.c \
 		ft_satoi.c \
 		tests.c \
-		check.c
+		check.c \
+		do.c \
+		solver.c
 
 OBJ		:= $(SRC:%.c=obj/%.o)
 
