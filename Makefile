@@ -11,6 +11,7 @@ SRC		= \
 		stack_modify.c \
 		stack_util.c \
 		stack_check.c \
+		stack_random.c \
 		util.c \
 		init.c \
 		crash.c \

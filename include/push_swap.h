@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 15:10:22 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 17:11:54 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ int		find_max(t_stack *stack);
 void	refresh_ends(t_stack *stack);
 void	refresh_minmax(t_stack *stack);
 void	set_minmax(t_stack *stack, int val);
+
+// stack_random.c
+void	fill_random(t_stack *stack, int size);
+void	empty_stack(t_stack *stack);
 
 // util.c
 bool	ft_isnum(char *s);

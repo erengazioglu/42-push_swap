@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 15:10:44 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 17:29:39 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ int	main(int argc, char **argv)
 	int	dist;
 
 	state = init(argc, argv);
+	fill_random(state->a, 100);
+	empty_stack(state->b);
+	state->moves = 0;
+	begin(state);
 	print_stacks(state);
+
+
 	while (state->a->count)
 	{
 		dist = distance_from_top(state->b, state->a->top->val);
