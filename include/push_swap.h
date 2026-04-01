@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:23:39 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 14:37:29 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,26 @@ void	crash(t_state *state, t_err err);
 // init.c
 t_state	*init(int argc, char **argv);
 
-// stack.c
+// stack_modify.c
+void	transfer(t_stack *from, t_stack *to, bool reverse);
+void	swap(t_stack *stack);
+void	rotate(t_stack *stack, bool reverse);
+
+// stack_add.c
 bool	add_top(t_stack *stack, int val);
 bool	add_bottom(t_stack *stack, int val);
 t_node	*pop(t_stack *stack, bool reverse);
 void	push(t_stack *stack, t_node *node, bool reverse);
-void	transfer(t_stack *from, t_stack *to, bool reverse);
-void	swap(t_stack *stack);
-void	rotate(t_stack *stack, bool reverse);
 
 // stack_find.c
 int		find_down(t_node *node, int val);
 int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
+
+// stack_util.c
+void	refresh_ends(t_stack *stack);
+void	refresh_minmax(t_stack *stack);
+void	set_minmax(t_stack *stack, int val);
 
 // util.c
 bool	ft_isnum(char *s);

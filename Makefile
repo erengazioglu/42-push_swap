@@ -6,8 +6,11 @@ INCLUDE = include/push_swap
 
 SRC		= \
 		main.c \
+		stack_add.c \
+		stack_find.c \
+		stack_modify.c \
+		stack_util.c \
 		util.c \
-		stack.c \
 		init.c \
 		crash.c \
 		print.c \
