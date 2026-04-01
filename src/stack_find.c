@@ -6,28 +6,29 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:20:53 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:39:08 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:20:48 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-// int	find_up(t_node *node, int val)
-// {
-// 	int	i;
+int	find_up(t_node *node, int val)
+{
+	int	i;
 
-// 	if (!node->next)
-// 		return (0);
-// 	i = 1;
-// 	node = node->next;
-// 	while (node)
-// 	{
-// 		if (node->val == val)
-// 			return (i);
-// 		node = node->next;
-// 		i++;
-// 	}
-// }
+	if (!node->next)
+		return (0);
+	i = 1;
+	node = node->prev;
+	while (node)
+	{
+		if (node->val == val)
+			return (i);
+		node = node->prev;
+		i++;
+	}
+	return (0);
+}
 
 int	find_down(t_node *node, int val)
 {

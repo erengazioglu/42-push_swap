@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 17:11:54 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:35:21 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	push(t_stack *stack, t_node *node, bool reverse);
 
 // stack_find.c
 int		find_down(t_node *node, int val);
+int		find_up(t_node *node, int val);
 int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
 
@@ -94,6 +95,7 @@ void	test_pop_push(t_state *state);
 
 // check.c
 int		distance_from_top(t_stack *target, int val);
+int		distance_from_bottom(t_stack *target, int val);
 bool	check_order(t_stack *stack, bool reverse);
 
 // do.c

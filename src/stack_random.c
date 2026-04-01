@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 16:58:23 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 17:19:58 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:41:32 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // gives an int between 0 and max (exclusive)
 int		rand_max(int max)
 {
-	return (rand() % max + 1);
+	return (rand() % max);
 }
 
 void	empty_stack(t_stack *stack)

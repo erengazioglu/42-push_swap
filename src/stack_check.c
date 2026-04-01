@@ -6,11 +6,39 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:52:12 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:04:03 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+int	distance_from_bottom(t_stack *target, int val)
+{
+	t_node	*curr;
+	t_node	*next;
+	int		dist;
+
+	if (target->count < 3)
+		return (0);
+	if (val > target->max)
+		return (find_up(target->bottom, target->max) + 1);
+	if (val < target->min)
+		return (find_up(target->bottom, target->min));
+	dist = 0;
+	curr = target->bottom;
+	next = target->top;
+	while (curr)
+	{
+		if (val < curr->val && val > next->val)
+			return (dist);
+		curr = curr->prev;
+		if (curr)
+			next = curr->next;
+		dist++;
+	}
+	return (-1);
+}
+
 
 int	distance_from_top(t_stack *target, int val)
 {
