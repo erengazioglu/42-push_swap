@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   stack_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:26:55 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 14:52:12 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@ int	distance_from_top(t_stack *target, int val)
 
 	if (target->count < 3)
 		return (0);
+	if (val > target->max)
+		return (find_down(target->top, target->max));
+	if (val < target->min)
+		return (find_down(target->top, target->min) + 1);
 	dist = 0;
 	curr = target->top;
 	prev = target->bottom;
 	while (curr)
 	{
-		// if (val < )
-		if (val > curr->val && (prev->val > val || prev->val == target->min))
+		if (val > curr->val && val < prev->val)
 			return (dist);
 		curr = curr->next;
 		if (curr)

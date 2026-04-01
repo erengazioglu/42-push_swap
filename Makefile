@@ -10,13 +10,13 @@ SRC		= \
 		stack_find.c \
 		stack_modify.c \
 		stack_util.c \
+		stack_check.c \
 		util.c \
 		init.c \
 		crash.c \
 		print.c \
 		ft_satoi.c \
 		tests.c \
-		check.c \
 		do.c \
 		solver.c
 
