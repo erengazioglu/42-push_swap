@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:37:29 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 15:10:22 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_stack {
 
 typedef	struct s_state
 {
+	int		moves;
 	t_stack	*a;
 	t_stack	*b;
 	t_err	err;

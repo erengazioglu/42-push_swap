@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:17:06 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 11:27:56 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 15:10:36 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	do_swap(t_state *state, bool a, bool b)
 		swap(state->b);
 		ft_printf("sb\n");
 	}
+	state->moves++;
 }
 
 void	do_rotate(t_state *state, bool a, bool b)
@@ -50,6 +51,7 @@ void	do_rotate(t_state *state, bool a, bool b)
 		rotate(state->b, false);
 		ft_printf("rb\n");
 	}
+	state->moves++;
 }
 
 void	do_rotate_reverse(t_state *state, bool a, bool b)
@@ -70,6 +72,7 @@ void	do_rotate_reverse(t_state *state, bool a, bool b)
 		rotate(state->b, true);
 		ft_printf("rb\n");
 	}
+	state->moves++;
 }
 
 // true pushes to b, false pushes to a
@@ -85,4 +88,5 @@ void	do_push(t_state *state, bool b)
 		push(state->a, pop(state->b, false), false);
 		ft_printf("pa\n");
 	}
+	state->moves++;
 }

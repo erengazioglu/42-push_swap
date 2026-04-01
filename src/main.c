@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 15:06:36 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 15:10:44 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	main(int argc, char **argv)
 			do_rotate(state, false, true);
 		do_push(state, true);
 		print_stacks(state);
-	}	
+	}
+	while (state->b->top->val != state->b->max)
+		do_rotate(state, false, true);
+	print_stacks(state);
+	while (state->b->count)
+		do_push(state, false);
+	print_stacks(state);
+	ft_printf("total moves: %d\n", state->moves);
 	return (0);
 }
