@@ -6,71 +6,16 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 21:09:13 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 14:24:05 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	find_min(t_stack *stack)
-{
-	int		min;
-	t_node	*curr;
-
-	if (!stack->count)
-		return (0);
-	if (stack->count == 1)
-		return (stack->top->value);
-	curr = stack->top;
-	min = curr->value;
-	while (curr)
-	{
-		if (curr->value < min)
-			min = curr->value;
-		curr = curr->next;
-	}
-	stack->min = min;
-	return (min);
-}
-
-int	find_max(t_stack *stack)
-{
-	int		max;
-	t_node	*curr;
-
-	if (!stack->count)
-		return (0);
-	if (stack->count == 1)
-		return (stack->top->value);
-	curr = stack->top;
-	max = curr->value;
-	while (curr)
-	{
-		if (curr->value > max)
-			max = curr->value;
-		curr = curr->next;
-	}
-	stack->max = max;
-	return (max);
-}
 
 
-// int	find_up(t_node *node, int val)
-// {
-// 	int	i;
 
-// 	if (!node->next)
-// 		return (0);
-// 	i = 1;
-// 	node = node->next;
-// 	while (node)
-// 	{
-// 		if (node->value == val)
-// 			return (i);
-// 		node = node->next;
-// 		i++;
-// 	}
-// }
+
 
 // CAREFUL: you might lose references to nodes
 static void	refresh_ends(t_stack *stack)
@@ -103,24 +48,6 @@ void	set_minmax(t_stack *stack, int val)
 	}
 }
 
-int	find_down(t_node *node, int val)
-{
-	int	i;
-
-	if (!node->next)
-		return (0);
-	i = 1;
-	node = node->next;
-	while (node)
-	{
-		if (node->value == val)
-			return (i);
-		node = node->next;
-		i++;
-	}
-	return (0);
-}
-
 bool	add_top(t_stack *stack, int val)
 {
 	t_node	*node;
@@ -128,7 +55,7 @@ bool	add_top(t_stack *stack, int val)
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
 		return (false);
-	node->value = val;
+	node->val = val;
 	if ((!stack->bottom && !stack->top) || stack->count == 0)
 		stack->bottom = node;
 	else
@@ -148,7 +75,7 @@ bool	add_bottom(t_stack *stack, int val)
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
 		return (false);
-	node->value = val;
+	node->val = val;
 	if ((!stack->bottom && !stack->top) || stack->count == 0)
 		stack->top = node;
 	else
@@ -182,9 +109,9 @@ t_node	*pop(t_stack *stack, bool reverse)
 	}
 	stack->count--;
 	refresh_ends(stack);
-	if (node->value == stack->max)
+	if (node->val == stack->max)
 		find_max(stack);
-	if (node->value == stack->min)
+	if (node->val == stack->min)
 		find_min(stack);
 	return (node->prev = NULL, node->next = NULL, node);
 }
@@ -209,7 +136,7 @@ void	push(t_stack *stack, t_node *node, bool reverse)
 		stack->top = node;
 	}
 	stack->count++;
-	set_minmax(stack, node->value);
+	set_minmax(stack, node->val);
 }
 
 void	transfer(t_stack *from, t_stack *to, bool reverse)
@@ -272,8 +199,8 @@ void	refresh_limits(t_stack *stack)
 	}
 	else if (stack->count == 1)
 	{
-		stack->min = stack->top->value;
-		stack->max = stack->top->value;
+		stack->min = stack->top->val;
+		stack->max = stack->top->val;
 	}
 	else
 	{

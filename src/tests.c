@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/03/31 21:00:08 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 14:24:07 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	test_pop_push(t_state *state)
 	node = pop(state->a, false);
 	if (!node)
 		return ;
-	ft_printf("popped %d from a\n", node->value);
+	ft_printf("popped %d from a\n", node->val);
 	print_stacks(state);
 	push(state->b, node, false);
-	ft_printf("pushed %d to b\n", node->value);
+	ft_printf("pushed %d to b\n", node->val);
 	print_stacks(state);
 }
 

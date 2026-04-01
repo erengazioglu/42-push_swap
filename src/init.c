@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 11:31:40 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/01 14:23:57 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	has_duplicates(t_stack *stack)
 	node = stack->top;
 	while (node)
 	{
-		if (find_down(node, node->value))
+		if (find_down(node, node->val))
 			return (true);
 		node = node->next;
 	}
