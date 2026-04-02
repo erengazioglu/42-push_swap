@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 16:58:23 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 12:49:05 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 13:04:43 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	fill_random(t_stack *stack, int size)
 	empty_stack(stack);
 	while (size--)
 	{
-		val = rand_max(size * 10);
+		val = rand_max(size * 5);
 		if (stack->count)
 		{
-			while (stack->top->val == val || seek(stack->top, val, false))
-				val = rand_max(size * 10);
+			while (seek(stack->top, val, false) != -1)
+				val = rand_max(size * 5);
 		}
 		add_top(stack, val);
 	}
