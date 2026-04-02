@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 18:35:21 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:44:36 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "../libft/include/libft.h"
 
-typedef enum e_err {
+typedef enum e_err
+{
 	NOERR,
 	ERR_INIT,
 	ERR_ARGC,
@@ -24,13 +25,15 @@ typedef enum e_err {
 	ERR_STACK_EMPTY
 }	t_err;
 
-typedef struct s_node {
+typedef struct s_node
+{
 	int				val;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	t_node	*top;
 	t_node	*bottom;
 	int		count;
@@ -46,10 +49,24 @@ typedef	struct s_state
 	t_err	err;
 }	t_state;
 
-// crash.c
+/**
+ * @brief	Crashes the program gracefully.
+ * 			Cleans up allocated resources & displays
+ * 			an appropriate error message.
+ * @param state	State object.
+ * @param err	Error code (enum).
+ * @note	\(crash.c\)
+ */
 void	crash(t_state *state, t_err err);
 
-// init.c
+/**
+ * @brief	Parses program arguments and initializes the state object.
+ * 			Crashes accordingly if there's any issue.
+ * @param argc	Program arg count.
+ * @param argv	Program arg values.
+ * @return	Fresh state object.
+ * @note	\(init.c\)
+ */
 t_state	*init(int argc, char **argv);
 
 // stack_modify.c
@@ -63,9 +80,16 @@ bool	add_bottom(t_stack *stack, int val);
 t_node	*pop(t_stack *stack, bool reverse);
 void	push(t_stack *stack, t_node *node, bool reverse);
 
-// stack_find.c
-int		find_down(t_node *node, int val);
-int		find_up(t_node *node, int val);
+/**
+ * @brief	Seeks the node containing a specific value, 
+ * 			starting from a given node.
+ * @param node	Node to start seeking from.
+ * @param val	Value to look for.
+ * @param reverse	true = seek next, false = seek prev.
+ * @return	Distance from starting point (or -1 if not found).
+ * @note	\(stack_find.c\)
+ */
+int		seek(t_node *node, int val, bool reverse);
 int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
 
@@ -73,6 +97,7 @@ int		find_max(t_stack *stack);
 void	refresh_ends(t_stack *stack);
 void	refresh_minmax(t_stack *stack);
 void	set_minmax(t_stack *stack, int val);
+t_node	*stack_get(t_stack *stack, int index);
 
 // stack_random.c
 void	fill_random(t_stack *stack, int size);
@@ -92,6 +117,8 @@ int		ft_satoi(t_state *state, const char *str);
 void	test_satoi(t_state *state);
 void	test_stack_ops(t_state *state);
 void	test_pop_push(t_state *state);
+void	test_find_cheapest(t_state *state);
+void	randomize(t_state *state, int count, bool seed);
 
 // check.c
 int		distance_from_top(t_stack *target, int val);
@@ -106,6 +133,15 @@ void	do_push(t_state *state, bool b);
 
 // solver.c
 void	begin(t_state *state);
+void	sort_and_insert(t_state *state, int index);
 
+/**
+ * @brief Returns index of cheapest insertion.
+ * @param state	State object.
+ * @return	Index of node in A that's cheapest to insert into B.
+ * 			Negative values = counting from bottom.
+ * @note	\(solver_cheapest.c\)
+ */
+int		find_cheapest(t_state *state);
 
 #endif
