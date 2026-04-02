@@ -6,11 +6,19 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 21:49:05 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 03:20:01 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:16:41 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	print_insertion(t_ins *ins)
+{
+	ft_printf(
+		"insertion: idx=%d, cost=%d, reverse=%d\n",
+		ins->idx, ins->cost, ins->reverse
+	);
+}
 
 void	print_stack(t_stack *stack)
 {

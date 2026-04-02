@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 11:01:50 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:26:30 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,44 @@ void	begin(t_state *state)
 		do_swap(state, false, true);
 }
 
-void	sort_and_insert(t_state *state, int index)
+// TODO
+void	insert(t_state *state, t_ins ins)
 {
-	int	dist[2];
-	(void) index; // use it for pre-rotate
+	(void) state;
+	(void) ins;
+	return ;
+}
 
-	dist[0] = distance_from_top(state->b, state->a->top->val);
-	dist[1] = distance_from_bottom(state->b, state->a->top->val);
-	if (dist[0] < dist[1])
+void	sort_and_insert(t_state *state)
+{
+	t_ins	ins;
+	int		cost_reverse;
+
+	ins.cost = check_cost(state->b, state->a->top->val);
+	ins.idx = 0;
+	ins.reverse = false;
+	cost_reverse = (state->b->count - ins.cost) % state->b->count;
+	if (cost_reverse < ins.cost)
 	{
-		while (dist[1]--)
-			do_rotate_reverse(state, false, true);
-		do_push(state, true);
+		ins.reverse = true;
+		ins.cost = cost_reverse;
 	}
-	else
-	{
-		while (dist[0]--)
-			do_rotate(state, false, true);
-		do_push(state, true);
-	}
-	print_stacks(state);
+	seek_cheaper_top(state, &ins);
+	print_insertion(&ins);
+	// seek_cheaper_bottom(state, &ins);
+
+
+	// if (dist[0] < dist[1])
+	// {
+	// 	while (dist[1]--)
+	// 		do_rotate_reverse(state, false, true);
+	// 	do_push(state, true);
+	// }
+	// else
+	// {
+	// 	while (dist[0]--)
+	// 		do_rotate(state, false, true);
+	// 	do_push(state, true);
+	// }
+	// print_stacks(state);
 }

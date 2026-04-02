@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 14:58:26 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:24:34 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,13 @@ void	test_min_max(t_state *state)
 
 void	test_naive_solve(t_state *state)
 {
-	int	index;
-	
 	fill_random(state->a, 10);
 	empty_stack(state->b);
 	state->moves = 0;
 	begin(state);
 	print_stacks(state);
-	index = 0; // replace with cheapest index
 	while (state->a->count)
-		sort_and_insert(state, index);
+		sort_and_insert(state);
 	while (state->b->top->val != state->b->max)
 		do_rotate(state, false, true);
 	print_stacks(state);
@@ -99,18 +96,11 @@ void	randomize(t_state *state, int count, bool seed)
 
 void	test_find_cheapest(t_state *state)
 {
-	int		index;
-	t_node	*node;
+	// int		index;
+	// t_node	*node;
 
-	index = find_cheapest(state);
-	if (index)
-	{
-		node = stack_get(state->a, index);
-		ft_printf(
-			"%s%d:\ttop %d, bottom %d%s\n", YEL, 
-			node->val, 
-			distance_from_top(state->b, node->val), 
-			distance_from_bottom(state->b, node->val), RST
-		);
-	}
+	print_stacks(state);
+	// while (state->a->count)
+	sort_and_insert(state);
+	ft_printf("\n");
 }

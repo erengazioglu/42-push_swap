@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:17:06 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 15:10:36 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:20:23 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ void	do_rotate_reverse(t_state *state, bool a, bool b)
 	state->moves++;
 }
 
-// true pushes to b, false pushes to a
-void	do_push(t_state *state, bool b)
+void	do_push(t_state *state, bool reverse)
 {
-	if (b)
+	if (reverse)
 	{
 		push(state->b, pop(state->a, false), false);
 		ft_printf("pb\n");

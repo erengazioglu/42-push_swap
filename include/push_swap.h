@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 15:01:18 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:25:41 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "../libft/include/libft.h"
+
+typedef enum e_dir
+{
+	DIR_BOTH,
+	DIR_TOP,
+	DIR_BOTTOM
+}	t_dir;
 
 typedef enum e_err
 {
@@ -25,6 +32,9 @@ typedef enum e_err
 	ERR_STACK_EMPTY
 }	t_err;
 
+/**
+ * @brief	Element inside the stack, holding an int.
+ */
 typedef struct s_node
 {
 	int				val;
@@ -32,6 +42,10 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
+/**
+ * @brief	Represents a stack, implemented as a doubly-linked list
+ * 			with references to both start and end.
+ */
 typedef struct s_stack
 {
 	t_node	*top;
@@ -41,6 +55,22 @@ typedef struct s_stack
 	int		max;
 }	t_stack;
 
+/**
+ * @brief	Parameters to sort next node into stack b.
+ * @param idx		Position of node to be sorted.
+ * @param cost		The number of rotations needed for insertion.
+ * @param reverse	Whether the insertion should be made from the bottom.
+ */
+typedef struct s_ins
+{
+	int		idx;
+	int		cost;
+	bool	reverse;
+}	t_ins;
+
+/**
+ * @brief	Program state object.
+ */
 typedef	struct s_state
 {
 	int		moves;
@@ -114,6 +144,7 @@ void	empty_stack(t_stack *stack);
 bool	ft_isnum(char *s);
 
 // print.c
+void	print_insertion(t_ins *ins);
 void	print_stack(t_stack *stack);
 void	print_stacks(t_state *state);
 
@@ -128,19 +159,49 @@ void	test_find_cheapest(t_state *state);
 void	randomize(t_state *state, int count, bool seed);
 
 // check.c
-int		distance_from_top(t_stack *target, int val);
-int		distance_from_bottom(t_stack *target, int val);
+int		check_cost(t_stack *target, int val);
 bool	check_order(t_stack *stack, bool reverse);
 
-// do.c
+/**
+ * @brief	Swap the first 2 elements & print the action.
+ * @param state	Program state object.
+ * @param a	Whether to swap stack a.
+ * @param b	Whether to swap stack b.
+ * @note	\(do.c\)
+ */
 void	do_swap(t_state *state, bool a, bool b);
+
+/**
+ * @brief	Shift up all elements & print the action.
+ * 			The first element becomes the last one.
+ * @param state	Program state object.
+ * @param a	Whether to rotate stack a.
+ * @param b	Whether to rotate stack b.
+ * @note	\(do.c\)
+ */
 void	do_rotate(t_state *state, bool a, bool b);
+
+/**
+ * @brief	Shift down all elements & print the action.
+ * 			The last element becomes the first one.
+ * @param state	Program state object.
+ * @param a	Whether to rotate stack a.
+ * @param b	Whether to rotate stack b.
+ * @note	\(do.c\)
+ */
 void	do_rotate_reverse(t_state *state, bool a, bool b);
-void	do_push(t_state *state, bool b);
+
+/**
+ * @brief	Push the first element of one stack to the other.
+ * @param state		Program state object.
+ * @param reverse	Do b->a instead of a->b.
+ * @note	\(do.c\)
+ */
+void	do_push(t_state *state, bool reverse);
 
 // solver.c
 void	begin(t_state *state);
-void	sort_and_insert(t_state *state, int index);
+void	sort_and_insert(t_state *state);
 
 /**
  * @brief Returns index of cheapest insertion.
@@ -150,5 +211,6 @@ void	sort_and_insert(t_state *state, int index);
  * @note	\(solver_cheapest.c\)
  */
 int		find_cheapest(t_state *state);
+void	seek_cheaper_top(t_state *state, t_ins *ins);
 
 #endif
