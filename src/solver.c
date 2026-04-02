@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 18:54:51 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:25:55 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	sort_and_insert(t_state *state)
 		ins.cost = cost_reverse;
 	}
 	seek_cheaper_top(state, &ins);
+	seek_cheaper_bottom(state, &ins);
 	print_insertion(&ins);
 	insert(state, ins);
 	print_stacks(state);

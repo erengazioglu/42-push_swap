@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:12:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:46:16 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:23:06 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,27 @@ void	seek_cheaper_top(t_state *state, t_ins *ins)
 // TODO
 void	seek_cheaper_bottom(t_state *state, t_ins *ins)
 {
-	(void) state;
-	(void) ins;
+	t_node	*node;
+	int		i;
+	int		cost;
+	
+	if (state->a->count < 3)
+		return ;
+	node = state->a->bottom;
+	i = 1;
+	while (i < ins->cost && node)
+	{
+		cost = check_cost(state->b, node->val);
+		cost = (state->b->count - cost) % state->b->count;
+		if (cost < ins->cost + i)
+		{
+			ins->cost = cost;
+			ins->idx = i;
+			ins->reverse = true;
+		}
+		i++;
+		node = node->prev;
+	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 18:58:43 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 01:29:04 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	test_naive_solve(t_state *state)
 void	randomize(t_state *state, int count, bool seed)
 {
 	if (seed)
-		srand(1775148954);
-		// srand(time(NULL));
+		// srand(1775148954);
+		srand(time(NULL));
 	fill_random(state->a, count);
 	empty_stack(state->b);
 	state->moves = 0;
@@ -108,8 +108,8 @@ void	test_find_cheapest(t_state *state)
 		sort_and_insert(state);
 	if (!check_order(state->a, false))
 		do_swap(state, true, false);
-	while (state->b->top->val != state->b->max)
-		do_rotate(state, false, true);
+	// while (state->b->top->val != state->b->max)
+	// 	do_rotate(state, false, true);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 	state->moves = 0;
