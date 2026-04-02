@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 18:04:03 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:40:17 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	distance_from_bottom(t_stack *target, int val)
 	if (target->count < 3)
 		return (0);
 	if (val > target->max)
-		return (find_up(target->bottom, target->max) + 1);
+		return (seek(target->bottom, target->max, true) + 1);
 	if (val < target->min)
-		return (find_up(target->bottom, target->min));
+		return (seek(target->bottom, target->min, true));
 	dist = 0;
 	curr = target->bottom;
 	next = target->top;
@@ -49,9 +49,9 @@ int	distance_from_top(t_stack *target, int val)
 	if (target->count < 3)
 		return (0);
 	if (val > target->max)
-		return (find_down(target->top, target->max));
+		return (seek(target->top, target->max, false));
 	if (val < target->min)
-		return (find_down(target->top, target->min) + 1);
+		return (seek(target->top, target->min, false) + 1);
 	dist = 0;
 	curr = target->top;
 	prev = target->bottom;

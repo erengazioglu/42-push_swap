@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 21:49:05 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:23:59 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 03:20:01 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	print_stack(t_stack *stack)
 
 void	print_stacks(t_state *state)
 {
-	write(1, "a: ", 3);
+	write(1, "---\na: ", 7);
 	print_stack(state->a);
 	write(1, "b: ", 3);
 	print_stack(state->b);
+	write(1, "---\n", 4);
 }

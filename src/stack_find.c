@@ -6,46 +6,28 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:20:53 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 18:20:48 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:45:20 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	find_up(t_node *node, int val)
+int	seek(t_node *node, int val, bool reverse)
 {
 	int	i;
 
-	if (!node->next)
-		return (0);
-	i = 1;
-	node = node->prev;
+	i = 0;
 	while (node)
 	{
 		if (node->val == val)
 			return (i);
-		node = node->prev;
+		if (reverse)
+			node = node->prev;
+		else
+			node = node->next;
 		i++;
 	}
-	return (0);
-}
-
-int	find_down(t_node *node, int val)
-{
-	int	i;
-
-	if (!node->next)
-		return (0);
-	i = 1;
-	node = node->next;
-	while (node)
-	{
-		if (node->val == val)
-			return (i);
-		node = node->next;
-		i++;
-	}
-	return (0);
+	return (-1);
 }
 
 int	find_val(t_node *node, int val)
