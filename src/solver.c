@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:46:44 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 18:54:51 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,4 @@ void	sort_and_insert(t_state *state)
 	insert(state, ins);
 	print_stacks(state);
 	ft_printf("\n");
-
-	// seek_cheaper_bottom(state, &ins);
-
-
-	// if (dist[0] < dist[1])
-	// {
-	// 	while (dist[1]--)
-	// 		do_rotate_reverse(state, false, true);
-	// 	do_push(state, true);
-	// }
-	// else
-	// {
-	// 	while (dist[0]--)
-	// 		do_rotate(state, false, true);
-	// 	do_push(state, true);
-	// }
-	// print_stacks(state);
 }

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:25:41 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 18:59:51 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	randomize(t_state *state, int count, bool seed);
 
 // check.c
 int		check_cost(t_stack *target, int val);
-bool	check_order(t_stack *stack, bool reverse);
+bool	check_order(t_stack *stack, bool descending);
 
 /**
  * @brief	Swap the first 2 elements & print the action.
