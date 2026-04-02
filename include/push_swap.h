@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 12:44:36 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 15:01:18 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,13 @@ int		find_max(t_stack *stack);
 void	refresh_ends(t_stack *stack);
 void	refresh_minmax(t_stack *stack);
 void	set_minmax(t_stack *stack, int val);
+/**
+ * @brief	Return the node at given index.
+ * @param stack	Stack to return the node from.
+ * @param index	Target index. If negative, counts from the bottom.
+ * @return	Node at target index.
+ * @note	\(stack_util.c\)
+ */
 t_node	*stack_get(t_stack *stack, int index);
 
 // stack_random.c

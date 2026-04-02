@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:12:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 12:10:46 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 15:03:17 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	seek_cheaper_bottom(t_state *state, int dist[2])
 
 	if (state->a->count < 3)
 		return (0);
-	ft_printf("seek bottom ");
 	cheapest = 0;
 	i = 1;
 	node = state->a->bottom;
@@ -64,7 +63,6 @@ int	seek_cheaper_bottom(t_state *state, int dist[2])
 		i++;
 		node = node->prev;
 	}
-	ft_printf("returning %d\n", cheapest);
 	return (cheapest);
 }
 

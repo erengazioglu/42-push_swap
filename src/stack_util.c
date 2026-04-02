@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:33:48 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 11:38:44 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 15:05:03 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ t_node	*stack_get(t_stack *stack, int index)
 	
 	if (index == 0)
 		return (stack->top);
+	// ft_printf("stack_get: idx %d\n", index);
 	if (index < 0)
 	{
-		index = index * 1 - 1;
+		index = (index * -1) - 1;
 		if (stack->count <= index)
 			return (NULL);
 		node = stack->bottom;
