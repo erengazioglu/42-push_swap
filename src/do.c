@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:17:06 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:20:23 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:48:43 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ void	do_rotate_reverse(t_state *state, bool a, bool b)
 	{
 		rotate(state->a, true);
 		rotate(state->b, true);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 	}
 	else if (a)
 	{
 		rotate(state->a, true);
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 	}
 	else if (b)
 	{
 		rotate(state->b, true);
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 	}
 	state->moves++;
 }
@@ -79,13 +79,13 @@ void	do_push(t_state *state, bool reverse)
 {
 	if (reverse)
 	{
-		push(state->b, pop(state->a, false), false);
-		ft_printf("pb\n");
+		push(state->a, pop(state->b, false), false);
+		ft_printf("pa\n");
 	}
 	else
 	{
-		push(state->a, pop(state->b, false), false);
-		ft_printf("pa\n");
+		push(state->b, pop(state->a, false), false);
+		ft_printf("pb\n");
 	}
 	state->moves++;
 }

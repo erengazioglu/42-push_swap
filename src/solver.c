@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:26:30 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:46:44 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	begin(t_state *state)
 	
 	i = 0;
 	while (i++ < 3)
-		do_push(state, true);
+		do_push(state, false);
 	if (!check_order(state->b, true))
 		do_swap(state, false, true);
 }
@@ -26,9 +26,23 @@ void	begin(t_state *state)
 // TODO
 void	insert(t_state *state, t_ins ins)
 {
-	(void) state;
-	(void) ins;
-	return ;
+	if (!ins.reverse)
+	{
+		while (ins.cost > 0 || ins.idx > 0)
+			do_rotate(state, ins.idx-- > 0, ins.cost-- > 0);
+		do_push(state, false);
+		return ;
+	}
+	else
+	{
+		while (ins.cost > 0 || ins.idx > 0)
+			do_rotate_reverse(state, ins.idx-- > 0, ins.cost-- > 0);
+		do_push(state, false);
+		return ;
+	}
+	// (void) state;
+	// (void) ins;
+	// return ;
 }
 
 void	sort_and_insert(t_state *state)
@@ -47,6 +61,10 @@ void	sort_and_insert(t_state *state)
 	}
 	seek_cheaper_top(state, &ins);
 	print_insertion(&ins);
+	insert(state, ins);
+	print_stacks(state);
+	ft_printf("\n");
+
 	// seek_cheaper_bottom(state, &ins);
 
 

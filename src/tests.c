@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 17:24:34 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:55:17 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ void	test_find_cheapest(t_state *state)
 	// t_node	*node;
 
 	print_stacks(state);
-	// while (state->a->count)
-	sort_and_insert(state);
-	ft_printf("\n");
+	while (state->a->count > 3)
+		sort_and_insert(state);
+	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
+	state->moves = 0;
 }
