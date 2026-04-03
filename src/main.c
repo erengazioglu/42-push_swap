@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 14:19:11 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:00:20 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	rewind_a(state);
 	rewind_b(state);
 	transfer(state);
+	rewind_a(state);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 	return (0);
