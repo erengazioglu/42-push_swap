@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:20:53 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 16:57:13 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 19:55:55 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	find_min(t_stack *stack)
 	t_node	*curr;
 
 	if (!stack->count)
-		return (0);
+		return (stack->min = 0, 0);
 	if (stack->count == 1)
-		return (stack->top->val);
+		return (stack->min = stack->top->val, stack->top->val);
 	curr = stack->top;
 	min = curr->val;
 	while (curr)
@@ -47,8 +47,7 @@ int	find_min(t_stack *stack)
 			min = curr->val;
 		curr = curr->next;
 	}
-	stack->min = min;
-	return (min);
+	return (stack->min = min, min);
 }
 
 int	find_max(t_stack *stack)
@@ -57,9 +56,9 @@ int	find_max(t_stack *stack)
 	t_node	*curr;
 
 	if (!stack->count)
-		return (0);
+		return (stack->max = 0, 0);
 	if (stack->count == 1)
-		return (stack->top->val);
+		return (stack->max = stack->top->val, stack->top->val);
 	curr = stack->top;
 	max = curr->val;
 	while (curr)
@@ -68,6 +67,5 @@ int	find_max(t_stack *stack)
 			max = curr->val;
 		curr = curr->next;
 	}
-	stack->max = max;
-	return (max);
+	return (stack->max = max, max);
 }

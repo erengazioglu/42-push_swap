@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:31:20 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 13:56:39 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:45:13 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_node	*pop(t_stack *stack, bool reverse)
 	else
 	{
 		node = stack->top;
-		stack->top = stack->top->next;
+		stack->top = node->next;
 	}
 	stack->count--;
 	refresh_ends(stack);
