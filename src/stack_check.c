@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 01:14:27 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 17:15:22 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ bool	check_order(t_stack *stack, bool descending)
 		}
 		curr = curr->next;
 	}
-	return (true);
+	if (descending)
+		return (curr->val > stack->top->val && curr->val != stack->min);
+	return (curr->val < stack->top->val && curr->val != stack->max);
+
 }
