@@ -6,21 +6,42 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:10:34 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:43:23 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	begin(t_state *state)
+/**
+ * @brief Starts the sorting by sending the first 3 nodes to B.
+ * @param state	State object.
+ * @return	If false, the program is already over.
+ * @note	\(solver.c\)
+ */
+bool	prepare(t_state *state)
 {
 	int	i;
 
 	i = 0;
-	while (i++ < 3)
+	if (state->a->count == 2)
+	{
+		if (state->a->top->val > state->a->bottom->val)
+			do_swap(state, true, false);
+		return (false);
+	}
+	if (state->a->count == 3)
+	{
+		if (!check_order(state->a, false))
+			do_swap(state, true, false);
+		while (state->a->top->val != state->a->min)
+			do_rotate(state, true, false);
+		return (false);
+	}
+	while (i++ < 3 && state->a->count)
 		do_push(state, false);
 	if (!check_order(state->b, true))
 		do_swap(state, false, true);
+	return (true);
 }
 
 void	insert(t_state *state, t_ins ins)

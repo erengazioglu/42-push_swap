@@ -1,4 +1,4 @@
-b solve
+b sort_a
 run
 call (int)open("/dev/pts/1", 1, 0)
 call (int)dup2($1, 1)

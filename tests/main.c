@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:27:50 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 22:12:17 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 22:51:10 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_state	*init_test(void)
 {
 	t_state	*state;
+
 	state = ft_calloc(1, sizeof(t_state));
 	if (!state)
 		crash(NULL, ERR_INIT);
@@ -36,7 +37,7 @@ void	solve(t_state *state)
 	rewind_a(state);
 	rewind_b(state);
 	transfer(state);
-	rewind_a(state);
+	// rewind_a(state);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 }
@@ -46,9 +47,14 @@ int	main(void)
 	t_state		*state;
 	long int	seed;
 	
-	seed = 1775247114;
+	seed = time(NULL);
 	state = init_test();
-	randomize(state, 100, seed);
+	randomize(state, 500, seed);
 	solve(state);
+	for (int i = 0; i < 9; i++)
+	{
+		randomize(state, 500, 0);
+		solve(state);
+	}
 	printf("%sseed: %ld%s\n", YEL, seed, RST);
 }

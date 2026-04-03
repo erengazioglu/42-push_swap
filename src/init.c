@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 17:00:16 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:39:48 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,5 @@ t_state	*init(int argc, char **argv)
 		parse_many(state, argc, argv);
 	if (has_duplicates(state->a))
 		crash(state, ERR_DUP);
-	begin(state);
 	return (state);
 }

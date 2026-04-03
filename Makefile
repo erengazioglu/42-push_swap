@@ -15,7 +15,6 @@ SRC		= \
 		init.c \
 		crash.c \
 		print.c \
-		ft_satoi.c \
 		do.c \
 		solver.c \
 		solver_cost.c \
@@ -27,7 +26,7 @@ all		: $(NAME)
 
 $(NAME)	: $(OBJ) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $@
-$(OBJ): $(SRC:%.c=src/%.c) libft/libft.a $(INCLUDE)
+$(OBJ): $(SRC:%.c=src/%.c) libft/libft.a
 	@mkdir -p obj
 	$(CC) $(CFLAGS) -c $(@:obj/%.o=src/%.c) -o $@
 

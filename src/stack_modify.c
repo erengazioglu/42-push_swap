@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:20:13 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:47:08 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,21 @@ void	swap(t_stack *stack)
 
 	if (stack->count < 2)
 		return ;
-	node = stack->top->next;
-	node->next->prev = stack->top;
-	node->prev->next = node->next;
-	node->next = stack->top;
-	node->next->prev = node;
-	stack->top = node;
-	node->prev = NULL;
+	else if (stack->count == 2)
+	{
+		stack->bottom = stack->top;
+		stack->top = stack->bottom->next;
+		stack->bottom->prev = stack->top;
+		stack->top->next = stack->bottom;
+	}
+	else
+	{
+		node = stack->top->next;
+		node->next->prev = stack->top;
+		node->prev->next = node->next;
+		node->next = stack->top;
+		node->next->prev = node;
+		stack->top = node;
+		node->prev = NULL;
+	}
 }

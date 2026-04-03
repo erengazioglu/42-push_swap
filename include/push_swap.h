@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:13:15 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 23:03:57 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,6 @@ void	crash(t_state *state, t_err err);
  */
 t_state	*init(int argc, char **argv);
 
-// stack_modify.c
-void	swap(t_stack *stack);
-void	rotate(t_stack *stack, bool reverse);
-
-// stack_add.c
-bool	add_top(t_stack *stack, int val);
-bool	add_bottom(t_stack *stack, int val);
-t_node	*pop(t_stack *stack, bool reverse);
-void	push(t_stack *stack, t_node *node, bool reverse);
-
 /**
  * @brief	Seeks the node containing a specific value, 
  * 			starting from a given node.
@@ -126,6 +116,7 @@ int		find_max(t_stack *stack);
 void	refresh_ends(t_stack *stack);
 void	refresh_minmax(t_stack *stack);
 void	set_minmax(t_stack *stack, int val);
+
 /**
  * @brief	Return the node at given index.
  * @param stack	Stack to return the node from.
@@ -208,8 +199,13 @@ void	do_rotate_reverse(t_state *state, bool a, bool b);
  */
 void	do_push(t_state *state, bool reverse);
 
-// solver.c
-void	begin(t_state *state);
+/**
+ * @brief Starts the sorting by sending the first 3 nodes to B.
+ * @param state	State object.
+ * @return	If false, the program is already over.
+ * @note	\(solver.c\)
+ */
+bool	prepare(t_state *state);
 void	sort_and_insert(t_state *state);
 
 /**
@@ -226,6 +222,13 @@ void	sort_a(t_state *state);
 void	rewind_b(t_state *state);
 void	rewind_a(t_state *state);
 void	transfer(t_state *state);
+void	free_stack(t_stack *stack);
+void	swap(t_stack *stack);
+void	rotate(t_stack *stack, bool reverse);
+bool	add_top(t_stack *stack, int val);
+bool	add_bottom(t_stack *stack, int val);
+t_node	*pop(t_stack *stack, bool reverse);
+void	push(t_stack *stack, t_node *node, bool reverse);
 
 
 #endif
