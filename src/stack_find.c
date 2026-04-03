@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:20:53 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 13:04:52 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:16:20 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,6 @@ int	seek(t_node *node, int val, bool reverse)
 		i++;
 	}
 	return (-1);
-}
-
-int	find_val(t_node *node, int val)
-{
-	int	i;
-
-	if (!node->next)
-		return (0);
-	i = 1;
-	node = node->next;
-	while (node)
-	{
-		if (node->val == val)
-			return (i);
-		node = node->next;
-		i++;
-	}
-	return (0);
 }
 
 int	find_min(t_stack *stack)

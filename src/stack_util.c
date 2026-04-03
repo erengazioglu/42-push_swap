@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:33:48 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/02 15:05:03 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:16:34 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	refresh_minmax(t_stack *stack)
 	}
 	else
 	{
-		stack->min = find_min(stack);
-		stack->max = find_max(stack);
+		find_min(stack);
+		find_max(stack);
 	}
 }
 
@@ -68,7 +68,6 @@ t_node	*stack_get(t_stack *stack, int index)
 	
 	if (index == 0)
 		return (stack->top);
-	// ft_printf("stack_get: idx %d\n", index);
 	if (index < 0)
 	{
 		index = (index * -1) - 1;

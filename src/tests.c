@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 01:29:04 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:22:32 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,21 @@ void	test_find_cheapest(t_state *state)
 		ft_printf("not in order\n");
 		do_swap(state, false, true);
 	}
-	while (state->a->count)
+	while (state->a->count > 3 && !check_order(state->a, false))
 		sort_and_insert(state);
 	if (!check_order(state->a, false))
 		do_swap(state, true, false);
-	// while (state->b->top->val != state->b->max)
-	// 	do_rotate(state, false, true);
+	if (seek(state->b->top, state->b->max, false)
+		> (state->b->count / 2))
+	{
+		while (state->b->top->val != state->b->max)
+			do_rotate_reverse(state, false, true);
+	}
+	else
+	{
+		while (state->b->top->val != state->b->max)
+			do_rotate(state, false, true);
+	}
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 	state->moves = 0;
