@@ -20,7 +20,8 @@ SRC		= \
 		tests.c \
 		do.c \
 		solver.c \
-		solver_cost.c
+		solver_cost.c \
+		solver_sort.c
 
 OBJ		:= $(SRC:%.c=obj/%.o)
 

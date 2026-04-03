@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 01:20:20 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:56:35 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,9 @@ int		ft_satoi(t_state *state, const char *str);
 void	test_satoi(t_state *state);
 void	test_stack_ops(t_state *state);
 void	test_pop_push(t_state *state);
-void	test_find_cheapest(t_state *state);
-void	randomize(t_state *state, int count, bool seed);
+void	test_solve(t_state *state);
+void	test_sort_in_place(t_state *state);
+void	randomize(t_state *state, int count, bool seed, bool push3);
 
 // check.c
 int		check_cost(t_stack *target, int val);
@@ -213,5 +214,6 @@ void	sort_and_insert(t_state *state);
 int		find_cheapest(t_state *state);
 void	seek_cheaper_top(t_state *state, t_ins *ins);
 void	seek_cheaper_bottom(t_state *state, t_ins *ins);
+void	sort_in_place(t_state *state);
 
 #endif

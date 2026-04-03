@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 10:22:32 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:56:25 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ void	test_pop_push(t_state *state)
 
 void	test_satoi(t_state *state)
 {
-	// these should work
 	ft_printf("%d\n", ft_satoi(state, "1230"));
 	ft_printf("%d\n", ft_satoi(state, "0123"));
 	ft_printf("%d\n", ft_satoi(state, "-1230"));
 	ft_printf("%d\n", ft_satoi(state, "2147483647"));
 	ft_printf("%d\n", ft_satoi(state, "-2147483648"));
-	// these shouldn't
 	ft_printf("%d\n", ft_satoi(state, "2147483648"));
 	ft_printf("%d\n", ft_satoi(state, "-2147483649"));
 	ft_printf("%d\n", ft_satoi(state, "--1230"));
@@ -60,43 +58,19 @@ void	test_stack_ops(t_state *state)
 	print_stacks(state);
 }
 
-void	test_min_max(t_state *state)
-{
-	ft_printf("min: %d\n", find_min(state->a));
-	ft_printf("max: %d\n", find_max(state->a));
-}
-
-void	test_naive_solve(t_state *state)
-{
-	fill_random(state->a, 10);
-	empty_stack(state->b);
-	state->moves = 0;
-	begin(state);
-	print_stacks(state);
-	while (state->a->count)
-		sort_and_insert(state);
-	while (state->b->top->val != state->b->max)
-		do_rotate(state, false, true);
-	print_stacks(state);
-	while (state->b->count)
-		do_push(state, false);
-	print_stacks(state);
-	ft_printf("total moves: %d\n", state->moves);
-}
-
-void	randomize(t_state *state, int count, bool seed)
+void	randomize(t_state *state, int count, bool seed, bool push3)
 {
 	if (seed)
-		// srand(1775148954);
 		srand(time(NULL));
 	fill_random(state->a, count);
 	empty_stack(state->b);
 	state->moves = 0;
-	begin(state);
+	if (push3)
+		begin(state);
 }
 #include <stdio.h>
 
-void	test_find_cheapest(t_state *state)
+void	test_solve(t_state *state)
 {
 	print_stacks(state);
 	if (!check_order(state->b, true))
@@ -119,6 +93,16 @@ void	test_find_cheapest(t_state *state)
 		while (state->b->top->val != state->b->max)
 			do_rotate(state, false, true);
 	}
+	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
+	print_stacks(state);
+	state->moves = 0;
+	printf("%s(seed): %ld%s\n", YEL, time(NULL), RST);
+}
+
+void	test_sort_in_place(t_state *state)
+{
+	print_stacks(state);
+	sort_in_place(state);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 	state->moves = 0;
