@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 12:58:58 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:50:01 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,34 @@ static bool	swap_condition(t_stack *stack, t_node *n1, t_node *n2)
 	);
 }
 
+void	rewind_a(t_state *state)
+{
+	if (!state->a->count)
+		return ;
+	if (seek(state->a->top, state->a->min, false) > (state->a->count / 2))
+	{
+		while (state->a->top->val != state->a->min)
+			do_rotate_reverse(state, true, false);
+	}
+	else
+	{
+		while (state->a->top->val != state->a->min)
+			do_rotate(state, true, false);
+	}
+}
+
 // ascending sort for a only, you don't need this for b
-void	sort_in_place(t_state *state)
+void	sort_a(t_state *state)
 {
 	t_node	*curr;
 
+	if (state->a->count < 3)
+		return ;
+	if (state->a->count == 3)
+	{
+		do_swap(state, true, false);
+		return ;
+	}
 	while (!check_order(state->a, false))
 	{
 		curr = state->a->top;
@@ -38,6 +61,29 @@ void	sort_in_place(t_state *state)
 			do_rotate(state, true, false);
 			do_swap(state, true, false);
 		}
-		check_order(state->a, false);
 	}
 }
+
+void	transfer(t_state *state)
+{
+	t_node	*node;
+
+	while (state->b->count)
+	{
+		while (state->a->bottom->val > state->b->top->val)
+			do_rotate_reverse(state, true, false);
+		node = pop(state->b, false);
+		push(state->a, node, false);
+	}
+}
+
+// void	transfer(t_stack *from, t_stack *to, bool reverse)
+// {
+// 	t_node	*node;
+
+// 	while (from->count)
+// 	{
+// 		node = pop(from, false);
+// 		push(to, node, reverse);
+// 	}
+// }

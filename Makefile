@@ -17,7 +17,6 @@ SRC		= \
 		crash.c \
 		print.c \
 		ft_satoi.c \
-		tests.c \
 		do.c \
 		solver.c \
 		solver_cost.c \

@@ -6,22 +6,12 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/01 14:36:52 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:19:26 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	transfer(t_stack *from, t_stack *to, bool reverse)
-{
-	t_node	*node;
-
-	while (from->count)
-	{
-		node = pop(from, false);
-		push(to, node, reverse);
-	}
-}
 
 void	rotate(t_stack *stack, bool reverse)
 {

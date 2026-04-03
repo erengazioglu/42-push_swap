@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 12:56:35 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:26:19 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	crash(t_state *state, t_err err);
 t_state	*init(int argc, char **argv);
 
 // stack_modify.c
-void	transfer(t_stack *from, t_stack *to, bool reverse);
 void	swap(t_stack *stack);
 void	rotate(t_stack *stack, bool reverse);
 
@@ -214,6 +213,10 @@ void	sort_and_insert(t_state *state);
 int		find_cheapest(t_state *state);
 void	seek_cheaper_top(t_state *state, t_ins *ins);
 void	seek_cheaper_bottom(t_state *state, t_ins *ins);
-void	sort_in_place(t_state *state);
+void	sort_a(t_state *state);
+void	rewind_b(t_state *state);
+void	rewind_a(t_state *state);
+void	transfer(t_state *state);
+
 
 #endif

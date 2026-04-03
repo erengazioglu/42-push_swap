@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 22:46:29 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 12:56:25 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:07:44 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	test_solve(t_state *state)
 void	test_sort_in_place(t_state *state)
 {
 	print_stacks(state);
-	sort_in_place(state);
+	sort_a(state);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	print_stacks(state);
 	state->moves = 0;
