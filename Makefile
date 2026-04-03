@@ -11,7 +11,6 @@ SRC		= \
 		stack_modify.c \
 		stack_util.c \
 		stack_check.c \
-		stack_random.c \
 		util.c \
 		init.c \
 		crash.c \
@@ -28,7 +27,7 @@ all		: $(NAME)
 
 $(NAME)	: $(OBJ) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $@
-$(OBJ): $(SRC:%.c=src/%.c) libft/libft.a # ($(INCLUDE))
+$(OBJ): $(SRC:%.c=src/%.c) libft/libft.a $(INCLUDE)
 	@mkdir -p obj
 	$(CC) $(CFLAGS) -c $(@:obj/%.o=src/%.c) -o $@
 

@@ -6,14 +6,12 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/02 10:12:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 01:23:06 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:13:43 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-// checks from above.
-// from below is simply (stack->count - cost) % stack->count.
 int	check_cost(t_stack *target, int val)
 {
 	t_node	*curr;
@@ -65,13 +63,12 @@ void	seek_cheaper_top(t_state *state, t_ins *ins)
 	}
 }
 
-// TODO
 void	seek_cheaper_bottom(t_state *state, t_ins *ins)
 {
 	t_node	*node;
 	int		i;
 	int		cost;
-	
+
 	if (state->a->count < 3)
 		return ;
 	node = state->a->bottom;
@@ -90,41 +87,3 @@ void	seek_cheaper_bottom(t_state *state, t_ins *ins)
 		node = node->prev;
 	}
 }
-
-
-
-
-
-// int	find_cheapest(t_state *state)
-// {
-// 	int		cost[2];
-// 	t_node	*node;
-// 	int		index;
-// 	bool	reverse;
-
-// 	node = state->a->top;
-// 	cost[0] = check_insertion_cost(state->b, node->val);
-// 	cost[1] = (state->b->count - cost[0]) % state->b->count;
-// 	index = seek_cheaper(state, ft_min(cost[0], cost[1]));
-// 	// ft_printf("%s%d:\ttop %d, bottom %d%s\n", YEL, node->val, dist[0], dist[1], RST);
-// 	// index = seek_cheaper(state, dist);
-
-
-
-
-// 	// if (dist[0] < dist[1])
-// 	// 	index = seek_cheaper_top(state, dist);
-// 	// else
-// 	// 	index = seek_cheaper_bottom(state, dist) * -1;
-// 	if (index)
-// 	{
-// 		node = stack_get(state->a, index);
-// 		ft_printf(
-// 			"%s%d:\ttop %d, bottom %d%s\n", YEL, 
-// 			node->val, 
-// 			distance_from_top(state->b, node->val), 
-// 			distance_from_bottom(state->b, node->val), RST
-// 		);
-// 	}
-// 	return (index);
-// }

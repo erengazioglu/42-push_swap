@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:31:20 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 17:45:13 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:19:33 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	add_bottom(t_stack *stack, int val)
 
 t_node	*pop(t_stack *stack, bool reverse)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (!stack->count)
 		return (NULL);

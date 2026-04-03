@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 14:25:52 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:10:34 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	begin(t_state *state)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i++ < 3)
 		do_push(state, false);
@@ -23,7 +23,6 @@ void	begin(t_state *state)
 		do_swap(state, false, true);
 }
 
-// TODO
 void	insert(t_state *state, t_ins ins)
 {
 	if (!ins.reverse)
@@ -40,9 +39,6 @@ void	insert(t_state *state, t_ins ins)
 		do_push(state, false);
 		return ;
 	}
-	// (void) state;
-	// (void) ins;
-	// return ;
 }
 
 void	sort_and_insert(t_state *state)

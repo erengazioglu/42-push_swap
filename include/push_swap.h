@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 14:26:19 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:13:15 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,18 +147,27 @@ void	print_insertion(t_ins *ins);
 void	print_stack(t_stack *stack);
 void	print_stacks(t_state *state);
 
-// ft_satoi.c
+
+/**
+ * @brief	Strict atoi: won't accept leading whitespace, 
+ * trailing invalid characters,
+ * leading '+' or multiple '-'s.
+ * @param state	Program state object (for crash management).
+ * @param str	Number string to parse.
+ * @note	\(util.c\)
+ */
 int		ft_satoi(t_state *state, const char *str);
 
-// tests.c
-void	test_satoi(t_state *state);
-void	test_stack_ops(t_state *state);
-void	test_pop_push(t_state *state);
-void	test_solve(t_state *state);
-void	test_sort_in_place(t_state *state);
-void	randomize(t_state *state, int count, bool seed, bool push3);
-
-// check.c
+// checks from above.
+// from below is simply (stack->count - cost) % stack->count.
+/**
+ * @brief	Checks the operation cost of value into target stack.
+ * 	Checks insertion from above; for reverse insertion, calculate
+ * 	with `(stack->count - cost) % stack->count`.
+ * @param target	Stack to insert value in.
+ * @param val		Value to be inserted.
+ * @note	\(solver_cost.c\)
+ */
 int		check_cost(t_stack *target, int val);
 bool	check_order(t_stack *stack, bool descending);
 

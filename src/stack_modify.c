@@ -6,12 +6,11 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 14:19:26 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:20:13 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
 
 void	rotate(t_stack *stack, bool reverse)
 {
@@ -40,7 +39,7 @@ void	rotate(t_stack *stack, bool reverse)
 
 void	swap(t_stack *stack)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (stack->count < 2)
 		return ;
@@ -52,5 +51,3 @@ void	swap(t_stack *stack)
 	stack->top = node;
 	node->prev = NULL;
 }
-
-

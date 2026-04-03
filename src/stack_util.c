@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 14:33:48 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 17:34:31 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/03 20:21:01 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	set_minmax(t_stack *stack, int val)
 t_node	*stack_get(t_stack *stack, int index)
 {
 	t_node	*node;
-	
+
 	if (index == 0)
 		return (stack->top);
 	if (index < 0)
