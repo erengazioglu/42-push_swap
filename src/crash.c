@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:59:24 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:26:06 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 13:06:51 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ void	free_stack(t_stack *stack)
 
 void	crash(t_state *state, t_err err)
 {
-	(void) state;
-	
+	(void) err;
 	free_stack(state->a);
 	free_stack(state->b);
 	free(state);
-	ft_printf("err: %d\n", err);
+	write(2, "Error\n", 6);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:24:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:39:48 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:33:18 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static bool	has_duplicates(t_stack *stack)
 	if (stack->count < 2)
 		return (false);
 	node = stack->top;
-	while (node)
+	while (node->next)
 	{
 		if (seek(node->next, node->val, false) > 0)
 			return (true);
 		node = node->next;
 	}
-	return (false);
+	return (node->val == stack->top->val);
 }
 
 static void	parse_many(t_state *state, int argc, char **argv)

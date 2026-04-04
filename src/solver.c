@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 12:20:42 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:36:20 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ bool	prepare(t_state *state)
 	int	i;
 
 	i = 0;
+	if (state->a->count == 1)
+		return (false);
 	if (state->a->count == 2)
 	{
 		if (state->a->top->val > state->a->bottom->val)

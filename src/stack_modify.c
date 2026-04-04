@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 17:32:36 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:47:08 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:47:39 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	swap(t_stack *stack)
 		stack->top = stack->bottom->next;
 		stack->bottom->prev = stack->top;
 		stack->top->next = stack->bottom;
+		stack->bottom->next = NULL;
+		stack->top->prev = NULL;
 	}
 	else
 	{
