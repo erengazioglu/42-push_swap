@@ -28,6 +28,15 @@ You can pass either any number of integers as arguments, or a single string with
 - `./push_swap 1 4 9 78`
 - `./push_swap "29 83 751 2 9"`
 
+### Testing
+
+I wrote my own random stack generator to test my operations. You can clone it inside the root of this repo:
+`git clone git@github.com:erengazioglu/42-push_swap-tests.git tests`
+
+Then you can run `make` in the new "tests" directory.
+
+Alternatively, there's [swapinette.](https://github.com/Mrdolls/swapinette)
+
 ## Resources
 
 - **Peer learning:** I asked lots of fellow 42 students about what the main idea is and common pitfalls. I was recommended to either learn and apply Radix, or the infamous "Turk Sort" which is thought up specifically for this project.
