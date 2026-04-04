@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:27:50 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 11:22:50 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:09:49 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@ t_state	*init_test(void)
 	return (state);
 }
 
-void	solve(t_state *state)
-{
-	int	i;
-	if (!prepare(state))
-		return ;
-	ps(state, false);
-	while (state->a->count > 5 && !check_order(state->a, false))
-		sort_and_insert(state);
-	sort_a(state);
-	rewind_a(state);
-	rewind_b(state);
-	i = 0;
-	while (state->b->count && i++ < 10000)
-		transfer(state);
-	// transfer(state);
-	// rewind_a(state);
-	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
-	ps(state, true);
-}
-
 int	main(void)
 {
 	t_state		*state;
@@ -54,12 +34,20 @@ int	main(void)
 	seed = time(NULL);
 	state = init_test();
 	randomize(state, 100, seed);
+	if (!prepare(state))
+	{
+		ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
+		ps(state, true);
+	}
 	solve(state);
+	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
+	ps(state, true);
 	for (int i = 0; i < 9; i++)
 	{
 		randomize(state, 100, 0);
 		solve(state);
-		
+		ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
+		ps(state, true);
 	}
 	printf("%sseed: %ld%s\n", YEL, seed, RST);
 }

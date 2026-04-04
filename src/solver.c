@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 20:43:23 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 12:20:42 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,22 @@ void	rewind_b(t_state *state)
 		while (state->b->top->val != state->b->max)
 			do_rotate(state, false, true);
 	}
+}
+
+void	solve(t_state *state)
+{
+	int	i;
+
+	if (!prepare(state))
+		return ;
+	while (state->a->count > 5 && !check_order(state->a, false))
+		sort_and_insert(state);
+	sort_a(state);
+	rewind_a(state);
+	rewind_b(state);
+	i = 0;
+	while (state->b->count && i++ < 10000)
+		transfer(state);
+	while (state->a->top->val != state->a->min)
+		do_rotate_reverse(state, true, false);
 }

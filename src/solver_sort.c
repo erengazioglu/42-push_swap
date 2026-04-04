@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 23:34:50 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:29:43 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,31 @@ void	sort_a(t_state *state)
 
 void	transfer(t_state *state)
 {
-	while (state->b->count && state->a->min > state->b->max)
+	if (state->b->top->val > state->a->bottom->val)
 		do_push(state, true);
-	while (state->b->count)
+	else if (state->b->max > state->a->min)
+		do_rotate_reverse(state, true, false);
+	else
 	{
-		if (state->a->min < state->b->max)
-		{
-			while (state->a->bottom->val > state->b->top->val)
-				do_rotate_reverse(state, true, false);
-			do_push(state, true);
-		}
-		else if (
-			state->a->bottom->prev->val == state->a->max
-			&& state->a->bottom->val > state->b->top->val
-		)
-			do_rotate_reverse(state, true, false);
-		else
+		rewind_a(state);
+		while (state->b->count)
 			do_push(state, true);
 	}
 }
+
+	// while (state->b->count)
+	// {
+	// 	if (state->a->min < state->b->max)
+	// 	{
+	// 		while (state->a->bottom->val > state->b->top->val)
+	// 			do_rotate_reverse(state, true, false);
+	// 		do_push(state, true);
+	// 	}
+	// 	else if (
+	// 		state->a->bottom->prev->val == state->a->max
+	// 		&& state->a->bottom->val > state->b->top->val
+	// 	)
+	// 		do_rotate_reverse(state, true, false);
+	// 	else
+	// 		do_push(state, true);
+	// }

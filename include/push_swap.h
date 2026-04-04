@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 11:02:28 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:44:27 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,7 @@ bool	add_top(t_stack *stack, int val);
 bool	add_bottom(t_stack *stack, int val);
 t_node	*pop(t_stack *stack, bool reverse);
 void	push(t_stack *stack, t_node *node, bool reverse);
+void	solve(t_state *state);
 
 
 #endif
