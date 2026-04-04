@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:09 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 12:36:20 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 15:19:16 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,8 @@ bool	prepare(t_state *state)
 	int	i;
 
 	i = 0;
-	if (state->a->count == 1)
+	if (check_order(state->a, false))
 		return (false);
-	if (state->a->count == 2)
-	{
-		if (state->a->top->val > state->a->bottom->val)
-			do_swap(state, true, false);
-		return (false);
-	}
-	if (state->a->count == 3)
-	{
-		if (!check_order(state->a, false))
-			do_swap(state, true, false);
-		while (state->a->top->val != state->a->min)
-			do_rotate(state, true, false);
-		return (false);
-	}
 	while (i++ < 3 && state->a->count)
 		do_push(state, false);
 	if (!check_order(state->b, true))
@@ -102,6 +88,11 @@ void	solve(t_state *state)
 	int	i;
 
 	if (!prepare(state))
+	{
+		rewind_a(state);
+		return ;
+	}
+	if (check_order(state->a, false) && state->a->top->val == state->a->min)
 		return ;
 	while (state->a->count > 5 && !check_order(state->a, false))
 		sort_and_insert(state);

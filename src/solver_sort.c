@@ -6,23 +6,29 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 11:29:43 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 15:37:58 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static bool	swap_condition(t_stack *stack, t_node *n1, t_node *n2)
-{
-	return (
-		n1->val > n2->val && !(n1->val == stack->max && n2->val == stack->min)
-	);
-}
+// static bool	swap_condition(t_stack *stack, t_node *n1, t_node *n2)
+// {
+// 	return (
+// 		n1->val > n2->val && !(n1->val == stack->max && n2->val == stack->min)
+// 	);
+// }
 
 void	rewind_a(t_state *state)
 {
-	if (!state->a->count)
+	if (state->a->count < 2 || state->a->top->val == state->a->min)
 		return ;
+	if (state->a->count == 2)
+	{
+		if (state->a->top->val != state->a->min)
+			do_swap(state, true, false);
+		return;
+	}
 	if (seek(state->a->top, state->a->min, false) > (state->a->count / 2))
 	{
 		while (state->a->top->val != state->a->min)
@@ -35,33 +41,43 @@ void	rewind_a(t_state *state)
 	}
 }
 
-// ascending sort for a only, you don't need this for b
+// ascending sort for a up to 5 elements, you don't need this for b
 void	sort_a(t_state *state)
 {
-	t_node	*curr;
+	bool	swap_a;
+	bool	swap_b;
+	int		b_count[2];
 
-	if (state->a->count < 3)
-		return ;
-	if (state->a->count == 3)
+	// check_order and rewind account for (count <= 2)
+	if (check_order(state->a, false))
 	{
-		do_swap(state, true, false);
+		rewind_a(state);
 		return ;
 	}
-	while (!check_order(state->a, false))
+	b_count[0] = state->b->count;
+	b_count[1] = 0;
+	while (state->a->count > 3)
 	{
-		curr = state->a->top;
-		while (!swap_condition(state->a, curr, curr->next))
-		{
-			do_rotate_reverse(state, true, false);
-			curr = curr->prev;
-		}
-		do_swap(state, true, false);
-		while (swap_condition(state->a, curr, curr->next))
-		{
-			do_rotate(state, true, false);
-			do_swap(state, true, false);
-		}
+		do_push(state, false);
+		b_count[1]++;
 	}
+	swap_a = !check_order(state->a, false);
+	swap_b = b_count[1] == 2
+		&& state->b->top->val < state->b->top->next->val;
+	do_swap(state, swap_a, swap_b);
+	rewind_a(state);
+	while (state->b->count > b_count[0])
+	{
+		if (state->b->top->val > state->a->bottom->val)
+			do_push(state, true);
+		else if (state->a->bottom->val != state->a->min)
+			rewind_a(state);
+		else
+			do_push(state, true);
+	}
+	// while (state->b->count > b_count[0])
+	// 	transfer(state);
+	// rewind_a(state);
 }
 
 void	transfer(t_state *state)

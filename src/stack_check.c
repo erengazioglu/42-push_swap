@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 20:50:30 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 22:43:22 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 14:29:15 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	check_order(t_stack *stack, bool descending)
 	t_node	*curr;
 
 	curr = stack->top;
-	if (!curr)
+	if (!curr || !curr->next)
 		return (true);
 	while (curr->next)
 	{
