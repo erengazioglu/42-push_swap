@@ -1,17 +1,35 @@
 # PUSH SWAP
 
-- assuming argv is a space-separated list of integer values (using ft_split + ft_atoi)
-- stacks are doubly-linked lists, with refs to top and bottom
+_This project has been created as part of the 42 curriculum by egaziogl._
 
-## method
+## Description
 
-check if it's ordered _beyond_ the edges too, accept looping order (e.g. 1 2 3 4 is the same as 3 4 1 2).
+An array sorting exercise with strict rules: a stack with random integers to be sorted, another empty stack to use for sorting operations, a handful of permitted moves (swap, rotate, push), and an upper limit.
 
-This means first two pushes to b are always in order, and the third push can be put in order with a simple swap.
+### Algorithm
 
-From there on, rotate & insert with the following rules:
-- check how many rotations to drop a->top in the right place (normal and reverse) -> distance_top, distance_bottom.
-- if normal 
+Initially I wanted to use Radix Sort or Quick Sort, but I noticed that the limitations are too specific and I needed something greedier and more optimistic. I was recommended the Turk Sort; I don't know what specific moves it does in detail, so I took the core idea (calculate insertion costs & greedily sort the stack).
 
-7 2 
-1 3 6 9
+Some particular implementation details:  
+- My interpretation of stacks is a sort of a linked list. For the operations I'm doing, **I decided to make it a doubly-linked list with a reference to both ends,** while also keeping min, max, and count variables always updated so that I can calculate costs precisely.
+- I created a "strict atoi" for parsing arguments.
+- The core of the algorithm runs until 5 nodes remain in the stack A, and then the stack A is sorted _almost in-place_ (using only the top of the stack B).
+- When checking for whether a stack is ordered or not, the algorithm _wraps around the edges in a circular manner,_ so the max and min values can be offset.
+
+## Instructions
+
+### Compilation
+
+Clone the repository & run `make`.
+
+### Use
+
+You can pass either any number of integers as arguments, or a single string with numbers separated by spaces:
+- `./push_swap 1 4 9 78`
+- `./push_swap "29 83 751 2 9"`
+
+## Resources
+
+- **Peer learning:** I asked lots of fellow 42 students about what the main idea is and common pitfalls. I was recommended to either learn and apply Radix, or the infamous "Turk Sort" which is thought up specifically for this project.
+- **AI:**
+    - I ask questions related to git and debugging to AI (e.g. _git workflow for managing branches and tags, how to use gdb to print to another tty..._).

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 17:08:56 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 18:50:19 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	transfer2(t_state *state)
 // ascending sort for a up to 5 elements, you don't need this for b
 void	sort_a(t_state *state)
 {
-	bool	swap_a;
 	bool	swap_b;
 	int		b_count[2];
 
@@ -68,10 +67,8 @@ void	sort_a(t_state *state)
 		do_push(state, false);
 		b_count[1]++;
 	}
-	swap_a = !check_order(state->a, false);
-	swap_b = b_count[1] == 2
-		&& state->b->top->val < state->b->top->next->val;
-	do_swap(state, swap_a, swap_b);
+	swap_b = (b_count[1] == 2 && state->b->top->val < state->b->top->next->val);
+	do_swap(state, !check_order(state->a, false), swap_b);
 	rewind_a(state);
 	while (state->b->count > b_count[0])
 		transfer2(state);
