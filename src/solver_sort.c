@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 16:54:56 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 17:08:56 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	sort_a(t_state *state)
 	swap_b = b_count[1] == 2
 		&& state->b->top->val < state->b->top->next->val;
 	do_swap(state, swap_a, swap_b);
+	rewind_a(state);
 	while (state->b->count > b_count[0])
 		transfer2(state);
 	rewind_a(state);
