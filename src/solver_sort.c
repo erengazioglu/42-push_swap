@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 15:37:58 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:28:58 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,16 @@ void	sort_a(t_state *state)
 	{
 		if (state->b->top->val > state->a->bottom->val)
 			do_push(state, true);
-		else if (state->a->bottom->val != state->a->min)
-			rewind_a(state);
+		else if (state->b->top->val < state->a->max
+			&& state->b->top->val > state->a->min)
+			do_rotate_reverse(state, true, false);
 		else
+		{
+			if (state->a->bottom->val != state->a->max)
+				rewind_a(state);
 			do_push(state, true);
+		}
 	}
-	// while (state->b->count > b_count[0])
-	// 	transfer(state);
-	// rewind_a(state);
 }
 
 void	transfer(t_state *state)

@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 14:17:44 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:29:48 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 		sort_a(state);
 	else
 		solve(state);
+	rewind_a(state);
 	free_stack(state->a);
 	free_stack(state->b);
 	free(state);
