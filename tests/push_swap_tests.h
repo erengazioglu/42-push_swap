@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:34:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 22:45:42 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:09:25 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@
 // problematic seeds:
 // 1775247114
 void	randomize(t_state *state, int count, long int seed);
+void	print_insertion(t_ins *ins);
+void	print_stack(t_stack *stack);
+void	ps(t_state *state, bool final);
 
 #endif

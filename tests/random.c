@@ -6,16 +6,16 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:28:37 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 22:11:44 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:13:14 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_tests.h"
 
 // gives an int between 0 and max (exclusive)
-int		rand_max(int max)
+int		rand_max(int max, int offset)
 {
-	return (rand() % max);
+	return (rand() % max + offset);
 }
 
 void	empty_stack(t_stack *stack)
@@ -35,11 +35,11 @@ void	fill_random(t_stack *stack, int size)
 	max = size * 5;
 	while (size--)
 	{
-		val = rand_max(max);
+		val = rand_max(max, -50);
 		if (stack->count)
 		{
 			while (seek(stack->top, val, false) != -1)
-				val = rand_max(max);
+				val = rand_max(max, -50);
 		}
 		add_top(stack, val);
 	}
