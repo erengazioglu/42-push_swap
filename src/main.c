@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:45:58 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 23:37:09 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:08:26 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	rewind_b(state);
 	transfer(state);
 	rewind_a(state);
-	print_stacks(state);
 	free_stack(state->a);
 	free_stack(state->b);
 	free(state);

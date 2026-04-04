@@ -14,7 +14,6 @@ SRC		= \
 		util.c \
 		init.c \
 		crash.c \
-		print.c \
 		do.c \
 		solver.c \
 		solver_cost.c \

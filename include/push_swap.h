@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:39:15 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/03 23:03:57 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 11:02:28 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,7 @@ t_node	*stack_get(t_stack *stack, int index);
 void	fill_random(t_stack *stack, int size);
 void	empty_stack(t_stack *stack);
 
-// util.c
 bool	ft_isnum(char *s);
-
-// print.c
-void	print_insertion(t_ins *ins);
-void	print_stack(t_stack *stack);
-void	print_stacks(t_state *state);
-
 
 /**
  * @brief	Strict atoi: won't accept leading whitespace, 
