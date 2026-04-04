@@ -6,14 +6,14 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:28:37 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 11:13:14 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:37:53 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_tests.h"
 
 // gives an int between 0 and max (exclusive)
-int		rand_max(int max, int offset)
+int	rand_max(int max, int offset)
 {
 	return (rand() % max + offset);
 }

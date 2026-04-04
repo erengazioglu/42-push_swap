@@ -6,18 +6,11 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:00:43 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 16:28:58 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:54:56 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-// static bool	swap_condition(t_stack *stack, t_node *n1, t_node *n2)
-// {
-// 	return (
-// 		n1->val > n2->val && !(n1->val == stack->max && n2->val == stack->min)
-// 	);
-// }
 
 void	rewind_a(t_state *state)
 {
@@ -27,7 +20,7 @@ void	rewind_a(t_state *state)
 	{
 		if (state->a->top->val != state->a->min)
 			do_swap(state, true, false);
-		return;
+		return ;
 	}
 	if (seek(state->a->top, state->a->min, false) > (state->a->count / 2))
 	{
@@ -41,6 +34,21 @@ void	rewind_a(t_state *state)
 	}
 }
 
+void	transfer2(t_state *state)
+{
+	if (state->b->top->val > state->a->bottom->val)
+		do_push(state, true);
+	else if (state->b->top->val < state->a->max
+		&& state->b->top->val > state->a->min)
+		do_rotate_reverse(state, true, false);
+	else
+	{
+		if (state->a->bottom->val != state->a->max)
+			rewind_a(state);
+		do_push(state, true);
+	}
+}
+
 // ascending sort for a up to 5 elements, you don't need this for b
 void	sort_a(t_state *state)
 {
@@ -48,7 +56,6 @@ void	sort_a(t_state *state)
 	bool	swap_b;
 	int		b_count[2];
 
-	// check_order and rewind account for (count <= 2)
 	if (check_order(state->a, false))
 	{
 		rewind_a(state);
@@ -65,21 +72,9 @@ void	sort_a(t_state *state)
 	swap_b = b_count[1] == 2
 		&& state->b->top->val < state->b->top->next->val;
 	do_swap(state, swap_a, swap_b);
-	rewind_a(state);
 	while (state->b->count > b_count[0])
-	{
-		if (state->b->top->val > state->a->bottom->val)
-			do_push(state, true);
-		else if (state->b->top->val < state->a->max
-			&& state->b->top->val > state->a->min)
-			do_rotate_reverse(state, true, false);
-		else
-		{
-			if (state->a->bottom->val != state->a->max)
-				rewind_a(state);
-			do_push(state, true);
-		}
-	}
+		transfer2(state);
+	rewind_a(state);
 }
 
 void	transfer(t_state *state)

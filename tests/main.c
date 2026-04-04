@@ -6,7 +6,7 @@
 /*   By: egaziogl <egaziogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 21:27:50 by egaziogl          #+#    #+#             */
-/*   Updated: 2026/04/04 12:09:49 by egaziogl         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:37:42 by egaziogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	main(void)
 {
 	t_state		*state;
 	long int	seed;
-	
+	int			i;
+
 	seed = time(NULL);
 	state = init_test();
 	randomize(state, 100, seed);
@@ -42,7 +43,8 @@ int	main(void)
 	solve(state);
 	ft_printf("%sfinished in %d moves%s\n", GRN, state->moves, RST);
 	ps(state, true);
-	for (int i = 0; i < 9; i++)
+	i = 0;
+	while (i++ < 9)
 	{
 		randomize(state, 100, 0);
 		solve(state);
